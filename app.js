@@ -7,7 +7,7 @@ const expressEjsLayout = require("express-ejs-layouts");
 //Mongoose
 mongoose
   .connect("mongodb://localhost/test", {
-    userNewUrlParser: true,
+    useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log("connected,,"))
