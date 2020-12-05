@@ -19,7 +19,7 @@ router.post("/register", (req, res) => {
   const { name, email, password, password2 } = req.body;
   let errors = [];
 
-  console.log(" Name " + name + " email : " + email + " pass : " + password);
+  console.log(" Name: " + name + " email: " + email + " password: " + password);
 
   if (!name || !email || !password || !password2) {
     errors.push({ msg: "Please fill in all fields" });
@@ -31,7 +31,7 @@ router.post("/register", (req, res) => {
   }
 
   // check is password is more than 6 characters
-  if (password.length > 6) {
+  if (password.length < 6) {
     errors.push({
       msg: "Password should be at least 6 characters, try again.",
     });
@@ -58,6 +58,23 @@ router.post("/register", (req, res) => {
           email: email,
           password: password,
         });
+
+        //Hash password
+        bcrypt.genSalt(10, (err, salt) =>
+          bcrypt.hash(newUser.password.salt, (err, hash) => {
+            if (err) throw err;
+            //save pass to hash
+            newUser.password = hash;
+            //save user
+            newUser
+              .save()
+              .then((value) => {
+                console.log(value);
+                res.redirect("./users/login");
+              })
+              .catch((value) => console.log(value));
+          })
+        );
       }
     });
   }
