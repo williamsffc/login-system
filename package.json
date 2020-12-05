@@ -2,7 +2,7 @@
   "name": "login-system",
   "version": "1.0.0",
   "description": "Login System in Node.js using Passport.js for user authentication",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "connect-flash": "^0.1.1",
