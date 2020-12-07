@@ -14,9 +14,13 @@
     "passport-local": "^1.0.0",
     "passport": "^0.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -27,5 +31,5 @@
   "bugs": {
     "url": "https://github.com/williamsffc/login-system/issues"
   },
-  "homepage": "https://github.com/williamsffc/login-system#readme"
+  "homepage": "https://williamsffc.github.io/login-system/"
 }
